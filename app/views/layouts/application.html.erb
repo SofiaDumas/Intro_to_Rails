@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%# Sets the page title dynamically if a title is provided, otherwise defaults to "Intro To Rails" %>
     <title><%= content_for(:title) || "Intro To Rails" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%# Enables web app mode on Apple and Android devices %>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# Placeholder for injecting additional head content from specific views if needed %>
     <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -19,14 +19,18 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%# Loads JavaScript modules managed by importmap-rails %>
     <%= javascript_importmap_tags "application" %>
   </head>
 
   <body>
     <header>
+      <%# Main heading for the site %>
       <h1>The Books List</h1>
-      <h2 style="color: green"> Your go-to shop for garden plants and supplies. All you need is here!</h2>
-            <nav class="nav-links">
+      <%# Subheading to invite user engagement %>
+      <h2 style="color: green"> Which adventure are you looking to dive into next?</h2>
+      <%# Navigation menu to different sections of the site %>
+      <nav class="nav-links">
         <ul class="nav-row">
           <li><%= link_to "Home", root_path%></li>
           <li><%= link_to "Authors", authors_path%></li>
@@ -35,7 +39,7 @@
         </ul>
       </nav>
     </header>
-    <!-- Main Content -->
+    <%# Renders the view-specific content inside the layout %>
     <%= yield %>
   </body>
 </html>
