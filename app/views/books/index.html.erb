@@ -1,0 +1,27 @@
+<h1>Yours Books List</h1>
+<%= form_with url: books_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :query, "Search Books"%>
+    <%= text_field_tag :query, params[:query], placeholder: "Enter book title" %>
+    <%= submit_tag "Search"%>
+  </div>
+<% end %>
+
+<ul>
+  <% @books.each do |book| %>
+    <li>
+      <strong><%= book.title %></strong> by <%= book.author.name || "Unknown Author"%>
+      (<%= book.publisher&.name || "No Publisher" %>)
+      <strong>Genres:</strong>
+      <span>
+        <% if book.genres.any? %>
+          <%= book.genres.map(&:name).join(", ") %>
+        <% else %>
+          Unknown
+        <% end %>
+      </span>
+    </li>
+  <% end %>
+</ul>
+
+<%=paginate @books%>
