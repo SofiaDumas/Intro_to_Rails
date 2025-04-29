@@ -18,7 +18,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "httparty"
 
-gem "kaminari" # Pagination for Active Record
+# This gem enables pagination support for Active Record models.
+gem "kaminari"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
