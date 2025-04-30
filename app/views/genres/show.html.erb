@@ -1,8 +1,12 @@
+<%# Display the name of the current genre as the main heading of the page %>
 <h1><%= @genre.name%></h1>
 
 <h2>Books in this genre:</h2>
+<%# Start an unordered list to display the books associated with this genre %>
 <ul>
+  <%# Loop through each book that belongs to this genre %>
   <%@genre.books.each do |book|%>
+    <%# Display the book title and the name of its author %>
     <li><%= book.title%> by <%=book.author.name %></li>
   <% end %>
 </ul>
