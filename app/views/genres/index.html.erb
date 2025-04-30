@@ -1,10 +1,15 @@
+<%# Main heading for the genres index page %>
 <h1>Genres List</h1>
+<%# Start an unordered list to display all genres %>
 <ul>
+  <%# Loop through each genre in the paginated @genres collection %>
   <% @genres.each do |genre| %>
     <li>
+        <%# Display each genre name as a clickable link to its show page %>
         <%= link_to genre.name, genre_path(genre)%>
     </li>
   <% end %>
 </ul>
 
+<%# Pagination controls to navigate between pages of genres %>
 <%=paginate @genres%>
