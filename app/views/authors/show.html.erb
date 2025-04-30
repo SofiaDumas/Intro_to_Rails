@@ -1,7 +1,11 @@
+<%# Display the author's name as the main heading of the page %>
 <h1><%= @author.name%></h1>
 
 <h2>Books writen by this author:</h2>
+
+<%# Start an unordered list to display the book titles %>
 <ul>
+  <%# Loop through each book that belongs to this author %>
   <%@author.books.each do |book|%>
     <li><%= book.title%></li>
   <% end %>
