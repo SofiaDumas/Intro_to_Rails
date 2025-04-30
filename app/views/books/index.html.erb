@@ -15,7 +15,7 @@
   <%# Loop through each book in the @books collection %>
   <% @books.each do |book| %>
     <li>
-      <strong><%= book.title %></strong> by <%= book.author.name || "Unknown Author"%>
+      <strong><%= link_to book.title, book_path(book) %></strong> by <%= book.author.name || "Unknown Author"%>
       (<%= book.publisher&.name || "No Publisher" %>)
       <strong>Genres:</strong>
       <span>

@@ -1,0 +1,22 @@
+<%# Display the title of the book as the main heading of the page %>
+<h1><%= @book.title%></h1>
+
+<h2>Books by the same author:</h2>
+
+<% if @book.author.present?%>
+  <% other_books = @book.author.books.where.not(id: @book.id)%>
+<%# Start an unordered list to display the book titles %>
+  <% if other_books.any? %>
+    <ul>
+      <%# Loop through each book by the same author %>
+      <% other_books.each do |related_book| %>
+        <%# Link each book title to its show page %>
+        <li><%= link_to related_book.title, book_path(related_book) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No other books by this author.</p>
+  <% end %>
+<%else%>
+  <p>No other books.</p>
+<%end%>
