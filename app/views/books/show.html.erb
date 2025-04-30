@@ -3,6 +3,7 @@
 
 <h2>Books by the same author:</h2>
 
+<%# Check if the book has an associated author %>
 <% if @book.author.present?%>
   <% other_books = @book.author.books.where.not(id: @book.id)%>
 <%# Start an unordered list to display the book titles %>
@@ -18,5 +19,6 @@
     <p>No other books by this author.</p>
   <% end %>
 <%else%>
+  <%# If the book has no author assigned, show a different fallback message %>
   <p>No other books.</p>
 <%end%>
