@@ -1,13 +1,18 @@
+<%# Main heading for the books list page %>
 <h1>Yours Books List</h1>
+<%# Search form for filtering books by title using a GET request %>
 <%= form_with url: books_path, method: :get, local: true do %>
   <div>
     <%= label_tag :query, "Search Books"%>
+    <%# Text input field that holds the search term; retains the query in the box after search %>
     <%= text_field_tag :query, params[:query], placeholder: "Enter book title" %>
     <%= submit_tag "Search"%>
   </div>
 <% end %>
 
+<%# Unordered list to display each book record %>
 <ul>
+  <%# Loop through each book in the @books collection %>
   <% @books.each do |book| %>
     <li>
       <strong><%= book.title %></strong> by <%= book.author.name || "Unknown Author"%>
@@ -23,5 +28,5 @@
     </li>
   <% end %>
 </ul>
-
+<%# Pagination controls to navigate between pages of books %>
 <%=paginate @books%>
